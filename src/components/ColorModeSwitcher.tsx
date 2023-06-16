@@ -25,7 +25,7 @@ export const ColorModeSwitcher: React.FC<ColorModeSwitcherProps> = (props) => {
     transform: isDarkMode ? "translateX(100%)" : "translateX(0%)",
     config: {
       tension: 300,
-      friction: 25,
+      friction: 40,
     },
   });
 

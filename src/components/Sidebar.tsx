@@ -68,10 +68,16 @@ const Sidebar: React.FC<SidebarProps> = ({ children, isOpen, setIsOpen }) => {
                 <Text>Menu Item 4</Text>
                 <ColorModeSwitcher />
                 <HStack w="full" justify="space-between">
-                  <Avvvatars value="tim@apple.com" size={40} />
+                  <HStack>
+                    <Avvvatars value="dpark4574@apple.com" size={40} />
+                    <VStack align="flex-start" fontSize="md" gap={0}>
+                      <Text>Daniel Park</Text>
+                    </VStack>
+                  </HStack>
+
                   <Button bg="transparent">
                     <BsArrowBarLeft
-                      size="27px"
+                      size="26px"
                       aria-label="Close sidebar"
                       onClick={handleClose}
                     />

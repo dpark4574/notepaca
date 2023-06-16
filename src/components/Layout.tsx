@@ -12,7 +12,11 @@ import {
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 
-const Layout: React.FC = () => {
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   const [sideBarOpen, setSideBarOpen] = useState<boolean>(true);
   return (
     <ChakraProvider>
@@ -51,15 +55,7 @@ const Layout: React.FC = () => {
             )}
           </Box>
 
-          <Box p="4">
-            {/* Main content goes here */}
-            <Heading as="h2" size="md">
-              Main Content
-            </Heading>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </Text>
-          </Box>
+          {children}
         </HStack>
       </VStack>
     </ChakraProvider>
