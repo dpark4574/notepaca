@@ -20,10 +20,19 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
+import { usePostHog } from "posthog-js/react";
 
 const Landing = () => {
+  const posthog = usePostHog();
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
+  const [rememberMe, setRemeberMe] = useState<boolean>(true);
+  const [loginError, setLoginError] = useState<boolean>(false);
+
+  const loginWithOption = (option: string) => {
+    posthog?.capture("Option: " + option);
+    console.log("Option:", option);
+  };
   return (
     <Center
       h="100vh"
@@ -91,6 +100,7 @@ const Landing = () => {
                 borderBottomRadius="none"
                 borderBottom="2px"
                 borderBottomColor="red.300"
+                onClick={() => loginWithOption("google")}
               >
                 <Image boxSize="30px" src="google.svg" />
               </Button>
@@ -101,6 +111,7 @@ const Landing = () => {
                 borderBottomRadius="none"
                 borderBottom="2px"
                 borderBottomColor="cyan.500"
+                onClick={() => loginWithOption("twitter")}
               >
                 <Image boxSize="30px" src="twitter.svg" />
               </Button>
@@ -111,6 +122,7 @@ const Landing = () => {
                 borderBottomRadius="none"
                 borderBottom="2px"
                 borderBottomColor="black"
+                onClick={() => loginWithOption("github")}
               >
                 <Image boxSize="30px" src="github.svg" />
               </Button>
@@ -128,6 +140,7 @@ const Landing = () => {
               </Heading>
               <InputGroup size="md" h="10">
                 <Input
+                  isInvalid={loginError}
                   focusBorderColor="yellow.400"
                   errorBorderColor="pink.400"
                   h="10"
@@ -144,6 +157,7 @@ const Landing = () => {
               <InputGroup size="md" h="10">
                 <Input
                   h="10"
+                  isInvalid={loginError}
                   pr="14"
                   focusBorderColor="yellow.400"
                   errorBorderColor="pink.400"
@@ -167,7 +181,12 @@ const Landing = () => {
               </InputGroup>
             </VStack>
             <HStack w="95%" justify="space-between" mt="2">
-              <Checkbox colorScheme="yellow" defaultChecked>
+              <Checkbox
+                colorScheme="yellow"
+                defaultChecked
+                isChecked={rememberMe}
+                onChange={() => setRemeberMe(!rememberMe)}
+              >
                 Remember me
               </Checkbox>
               <Text
@@ -187,6 +206,7 @@ const Landing = () => {
               bg="yellow.500"
               textColor="white"
               _hover={{ bg: "yellow.600" }}
+              onClick={() => console.log(rememberMe)}
             >
               Sign in
             </Button>
