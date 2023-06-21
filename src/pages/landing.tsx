@@ -67,6 +67,7 @@ const Landing = () => {
         p="1"
         shadow="2xl"
         h="2xl"
+        bgGradient={"linear(to-b, yellow.400 5%, white 25%)"}
       >
         <CardHeader
           rounded="2xl"
@@ -75,6 +76,7 @@ const Landing = () => {
         >
           <VStack textColor="#451a03">
             <Image
+              shadow="md"
               bgGradient="linear(to-b, #fcd34d , #fffbeb)"
               alt="logo"
               boxSize="80px"
@@ -82,46 +84,35 @@ const Landing = () => {
               src="logo192.png"
               my="2"
             />
-            <Heading
-              //   textDecoration="underline"
-              //   textDecorationColor="yellow.400"
-              size="md"
-            >
-              Welcome 👋
-            </Heading>
+            <Heading size="md">Welcome 👋</Heading>
             <Text fontSize="sm" textColor="blackAlpha.600" fontWeight="medium">
               Log in with
             </Text>
             <HStack mt="4" w="90%" justify="space-between">
               <Button
-                shadow="lg"
                 bg="white"
                 w="24"
-                borderBottomRadius="none"
-                borderBottom="2px"
-                borderBottomColor="red.300"
+                border="1px"
+                borderColor="#e5e5e5"
                 onClick={() => loginWithOption("google")}
               >
                 <Image boxSize="30px" src="google.svg" />
               </Button>
               <Button
-                shadow="lg"
                 bg="white"
                 w="24"
-                borderBottomRadius="none"
-                borderBottom="2px"
-                borderBottomColor="cyan.500"
+                border="1px"
+                borderColor="#e5e5e5"
                 onClick={() => loginWithOption("twitter")}
               >
                 <Image boxSize="30px" src="twitter.svg" />
               </Button>
               <Button
-                shadow="lg  "
+                // shadow="lg"
                 bg="white"
                 w="24"
-                borderBottomRadius="none"
-                borderBottom="2px"
-                borderBottomColor="black"
+                border="1px"
+                borderColor="#e5e5e5"
                 onClick={() => loginWithOption("github")}
               >
                 <Image boxSize="30px" src="github.svg" />
@@ -166,16 +157,13 @@ const Landing = () => {
                 />
                 <InputRightElement width="10">
                   <Button
+                    fontSize="lg"
                     bg="transparent"
                     _hover={{ bg: "transparent" }}
                     size="sm"
                     onClick={handleClick}
                   >
-                    {show ? (
-                      <BsEyeSlash color="gray" />
-                    ) : (
-                      <BsEye color="gray" />
-                    )}
+                    {show ? <span>👀</span> : <span>🕶️</span>}
                   </Button>
                 </InputRightElement>
               </InputGroup>
@@ -203,9 +191,9 @@ const Landing = () => {
               mt="4"
               w="full"
               h="12"
-              bg="yellow.500"
+              bg="#292524"
               textColor="white"
-              _hover={{ bg: "yellow.600" }}
+              _hover={{ bg: "#44403c" }}
               onClick={() => console.log(rememberMe)}
             >
               Sign in
